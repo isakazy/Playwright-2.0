@@ -1,14 +1,19 @@
-package sauceDemo;
+package playwrightUtil;
 
 import com.microsoft.playwright.*;
 
+import java.util.Properties;
+
 public class playwrightFactory {
+
+    Properties properties;
     Playwright playwright;
     Browser browser;
     BrowserContext browserContext;
     Page page;
 
-    public Page InitializeBrowser(String BrowserName){
+    public Page InitializeBrowser(){
+        String BrowserName = Config.getValue("browser");
         System.out.println("Browser Name is: "+ BrowserName);
 
         playwright = Playwright.create();
@@ -31,7 +36,11 @@ public class playwrightFactory {
         }
         browserContext = browser.newContext();
         page = browserContext.newPage();
-        page.navigate("https://naveenautomationlabs.com/opencart/");
+        page.navigate(Config.getValue("url").trim());
         return page;
     }
-}
+
+
+    }
+
+

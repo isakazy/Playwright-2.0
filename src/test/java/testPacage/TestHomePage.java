@@ -1,41 +1,23 @@
 package testPacage;
 
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
+import base.baseTestClass;
+import constants.ApplicationConstants;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import sauceDemo.playwrightFactory;
+import playwrightUtil.Config;
 
-public class TestHomePage {
-
-    playwrightFactory pf;
-    Page page;
-    HomePage homePage;
-
-
-
-    @BeforeTest
-    public void SetUp() {
-        pf = new playwrightFactory();
-        page = pf.InitializeBrowser("chromium");
-        homePage = new HomePage(page);
-
-    }
-
+public class TestHomePage extends baseTestClass {
 
 
     @Test
     public void TitleTest() {
-        Assert.assertEquals(homePage.getHomeTitle(), "Your Store");
+        Assert.assertEquals(homePage.getHomeTitle(), ApplicationConstants.LOGIN_PAGE_TITLE);
     }
 
     @Test
     public void UrlTest(){
-        Assert.assertEquals(homePage.getHomeUrl(), "https://naveenautomationlabs.com/opencart/");
+        Assert.assertEquals(homePage.getHomeUrl(), Config.getValue("url"));
     }
 
     @DataProvider
@@ -59,14 +41,17 @@ public class TestHomePage {
     }
 
 
+    @Test
+    public void testWarning(){
+        homePage.NavigateToLoginPage();
 
-
-
-    @AfterTest
-    public void Close(){
-        page.context().browser().close();
 
     }
+
+
+
+
+
 
 
 }

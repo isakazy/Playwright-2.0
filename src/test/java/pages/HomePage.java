@@ -12,6 +12,10 @@ public class HomePage {
     }
 
 
+    private final String myAccountDropDown = "//a[@title='My Account']";
+    private final String logInLing = "//a[.='Login']";
+
+
     //3.  page actions
     public String getHomeTitle(){
         String title = page.title();
@@ -32,6 +36,13 @@ public class HomePage {
         String macbook = "//div[@id='content']/h1";
         String header =  page.textContent(macbook);
         System.out.println("the search header is: "+ header);
+    }
+
+
+    public LogInPage NavigateToLoginPage(){
+        page.click(myAccountDropDown);
+        page.click(logInLing);
+        return new LogInPage(page);
     }
 
 }
