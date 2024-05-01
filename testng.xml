@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="All Test Suite" thread-count="2" parallel="tests">
+
+
+    <test
+          name="test one">
+       <classes>
+           <class name="testPacage.TestHomePage"> </class>
+       </classes>
+    </test>
+
+
+    <test name="test two ">
+        <classes>
+            <class name="testPacage.sideTest"> </class>
+        </classes>
+    </test>
+
+
+    <test name="test three">
+        <classes>
+            <class name="testPacage.LoginPageTest"> </class>
+        </classes>
+    </test>
+
+
+    <test name="test four">
+        <classes>
+            <class name="testPacage.RegistrationTest"> </class>
+        </classes>
+    </test>
+
+</suite>
